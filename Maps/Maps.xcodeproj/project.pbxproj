@@ -15,6 +15,7 @@
 		4688BC98270DC45A00F2916F /* MapsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688BC97270DC45A00F2916F /* MapsTests.swift */; };
 		4688BCA2270DC45A00F2916F /* MapsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688BCA1270DC45A00F2916F /* MapsUITests.swift */; };
 		4688BCA4270DC45A00F2916F /* MapsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688BCA3270DC45A00F2916F /* MapsUITestsLaunchTests.swift */; };
+		4688BCB4270DCE1A00F2916F /* MainMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688BCB3270DCE1A00F2916F /* MainMapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		4688BC9D270DC45A00F2916F /* MapsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MapsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4688BCA1270DC45A00F2916F /* MapsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsUITests.swift; sourceTree = "<group>"; };
 		4688BCA3270DC45A00F2916F /* MapsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4688BCB3270DCE1A00F2916F /* MainMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +101,9 @@
 			children = (
 				4688BC80270DC45900F2916F /* AppDelegate.swift */,
 				4688BC82270DC45900F2916F /* SceneDelegate.swift */,
-				4688BC84270DC45900F2916F /* StartViewController.swift */,
+				4688BCB0270DCBE600F2916F /* StartScene */,
+				4688BCB1270DCBF900F2916F /* MainMapScene */,
+				4688BCB2270DCC2300F2916F /* InfoPointScene */,
 				4688BC89270DC45A00F2916F /* Assets.xcassets */,
 				4688BC8B270DC45A00F2916F /* LaunchScreen.storyboard */,
 				4688BC8E270DC45A00F2916F /* Info.plist */,
@@ -122,6 +126,29 @@
 				4688BCA3270DC45A00F2916F /* MapsUITestsLaunchTests.swift */,
 			);
 			path = MapsUITests;
+			sourceTree = "<group>";
+		};
+		4688BCB0270DCBE600F2916F /* StartScene */ = {
+			isa = PBXGroup;
+			children = (
+				4688BC84270DC45900F2916F /* StartViewController.swift */,
+			);
+			path = StartScene;
+			sourceTree = "<group>";
+		};
+		4688BCB1270DCBF900F2916F /* MainMapScene */ = {
+			isa = PBXGroup;
+			children = (
+				4688BCB3270DCE1A00F2916F /* MainMapViewController.swift */,
+			);
+			path = MainMapScene;
+			sourceTree = "<group>";
+		};
+		4688BCB2270DCC2300F2916F /* InfoPointScene */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = InfoPointScene;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,6 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4688BCB4270DCE1A00F2916F /* MainMapViewController.swift in Sources */,
 				4688BC85270DC45900F2916F /* StartViewController.swift in Sources */,
 				4688BC81270DC45900F2916F /* AppDelegate.swift in Sources */,
 				4688BC83270DC45900F2916F /* SceneDelegate.swift in Sources */,
