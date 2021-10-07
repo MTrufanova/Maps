@@ -4,7 +4,7 @@
 <dict>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
-	<key>NSLocationUsageDescription</key>
+	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Maps application display user location</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

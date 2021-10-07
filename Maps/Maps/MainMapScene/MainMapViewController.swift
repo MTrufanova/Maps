@@ -7,6 +7,7 @@
 
 import UIKit
 import YandexMapsMobile
+import CoreLocation
 
 class MainMapViewController: UIViewController {
 
@@ -16,17 +17,25 @@ class MainMapViewController: UIViewController {
         return mapView
     }()
 
+    private let locationManager = CLLocationManager()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = true
         createMapView()
         setupLayout()
+
     }
     
     private func createMapView() {
-        mapView.mapWindow.map.move(
-            with: YMKCameraPosition.init(target: YMKPoint(latitude: 55.751574, longitude: 37.573856), zoom: 15, azimuth: 0, tilt: 0),
-            animationType: YMKAnimation(type: YMKAnimationType.smooth, duration: 5),
-            cameraCallback: nil)
+
+        if let lat = locationManager.location?.coordinate.latitude,
+           let long = locationManager.location?.coordinate.longitude {
+            mapView.mapWindow.map.move(
+                with: YMKCameraPosition.init(target: YMKPoint(latitude: lat, longitude: long), zoom: 15, azimuth: 0, tilt: 0),
+                animationType: YMKAnimation(type: YMKAnimationType.smooth, duration: 5),
+                cameraCallback: nil)
+        }
     }
 
     private func setupLayout() {
@@ -38,6 +47,24 @@ class MainMapViewController: UIViewController {
             mapView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
+    }
+
+
+}
+
+extension MainMapViewController: YMKUserLocationObjectListener {
+
+    func onObjectAdded(with view: YMKUserLocationView) {
+
+
+    }
+
+    func onObjectRemoved(with view: YMKUserLocationView) {
+
+    }
+
+    func onObjectUpdated(with view: YMKUserLocationView, event: YMKObjectEvent) {
+
     }
 
 
