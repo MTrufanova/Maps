@@ -13,7 +13,7 @@ class StartViewController: UIViewController {
         let button = UIButton()
         button.setTitle("Показать на карте", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
-        button.setTitleColor(.blue, for: .normal)
+       button.setTitleColor(Colors.blue, for: .normal)
         button.addTarget(self, action: #selector(showMapAction), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -21,7 +21,7 @@ class StartViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = Colors.background
         setupLayout()
     }
 

@@ -16,6 +16,9 @@
 		4688BCA2270DC45A00F2916F /* MapsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688BCA1270DC45A00F2916F /* MapsUITests.swift */; };
 		4688BCA4270DC45A00F2916F /* MapsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688BCA3270DC45A00F2916F /* MapsUITestsLaunchTests.swift */; };
 		4688BCB4270DCE1A00F2916F /* MainMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688BCB3270DCE1A00F2916F /* MainMapViewController.swift */; };
+		4688BCB6270DD56B00F2916F /* InfoPointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688BCB5270DD56B00F2916F /* InfoPointViewController.swift */; };
+		4688BCB8270EE25E00F2916F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4688BCB7270EE25E00F2916F /* Colors.xcassets */; };
+		4688BCBB270EE2C100F2916F /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688BCBA270EE2C100F2916F /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		4688BCA1270DC45A00F2916F /* MapsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsUITests.swift; sourceTree = "<group>"; };
 		4688BCA3270DC45A00F2916F /* MapsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4688BCB3270DCE1A00F2916F /* MainMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapViewController.swift; sourceTree = "<group>"; };
+		4688BCB5270DD56B00F2916F /* InfoPointViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPointViewController.swift; sourceTree = "<group>"; };
+		4688BCB7270EE25E00F2916F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		4688BCBA270EE2C100F2916F /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,10 +107,12 @@
 			children = (
 				4688BC80270DC45900F2916F /* AppDelegate.swift */,
 				4688BC82270DC45900F2916F /* SceneDelegate.swift */,
+				4688BCB9270EE2AC00F2916F /* Styles */,
 				4688BCB0270DCBE600F2916F /* StartScene */,
 				4688BCB1270DCBF900F2916F /* MainMapScene */,
 				4688BCB2270DCC2300F2916F /* InfoPointScene */,
 				4688BC89270DC45A00F2916F /* Assets.xcassets */,
+				4688BCB7270EE25E00F2916F /* Colors.xcassets */,
 				4688BC8B270DC45A00F2916F /* LaunchScreen.storyboard */,
 				4688BC8E270DC45A00F2916F /* Info.plist */,
 			);
@@ -147,8 +155,17 @@
 		4688BCB2270DCC2300F2916F /* InfoPointScene */ = {
 			isa = PBXGroup;
 			children = (
+				4688BCB5270DD56B00F2916F /* InfoPointViewController.swift */,
 			);
 			path = InfoPointScene;
+			sourceTree = "<group>";
+		};
+		4688BCB9270EE2AC00F2916F /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				4688BCBA270EE2C100F2916F /* Colors.swift */,
+			);
+			path = Styles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,6 +272,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4688BCB8270EE25E00F2916F /* Colors.xcassets in Resources */,
 				4688BC8D270DC45A00F2916F /* LaunchScreen.storyboard in Resources */,
 				4688BC8A270DC45A00F2916F /* Assets.xcassets in Resources */,
 			);
@@ -282,8 +300,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4688BCB4270DCE1A00F2916F /* MainMapViewController.swift in Sources */,
+				4688BCBB270EE2C100F2916F /* Colors.swift in Sources */,
 				4688BC85270DC45900F2916F /* StartViewController.swift in Sources */,
 				4688BC81270DC45900F2916F /* AppDelegate.swift in Sources */,
+				4688BCB6270DD56B00F2916F /* InfoPointViewController.swift in Sources */,
 				4688BC83270DC45900F2916F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
