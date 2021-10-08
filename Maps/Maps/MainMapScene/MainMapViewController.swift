@@ -36,6 +36,7 @@ class MainMapViewController: UIViewController {
                 animationType: YMKAnimation(type: YMKAnimationType.smooth, duration: 5),
                 cameraCallback: nil)
         }
+        mapView.mapWindow.map.addInputListener(with: self)
     }
 
     private func setupLayout() {
@@ -49,23 +50,22 @@ class MainMapViewController: UIViewController {
         ])
     }
 
-
 }
 
-extension MainMapViewController: YMKUserLocationObjectListener {
 
-    func onObjectAdded(with view: YMKUserLocationView) {
-
-
+extension MainMapViewController: YMKMapInputListener {
+    func onMapTap(with map: YMKMap, point: YMKPoint) {
+        let mapObjects = map.mapObjects
+        mapObjects.clear()
+        let placemark = mapObjects.addPlacemark(with: point)
+        placemark.setIconWith(Images.placemark)
     }
 
-    func onObjectRemoved(with view: YMKUserLocationView) {
-
-    }
-
-    func onObjectUpdated(with view: YMKUserLocationView, event: YMKObjectEvent) {
+    func onMapLongTap(with map: YMKMap, point: YMKPoint) {
 
     }
 
 
 }
+
+
