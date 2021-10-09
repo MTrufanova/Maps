@@ -7,6 +7,8 @@
 
 import UIKit
 
+private let largeConfig = UIImage.SymbolConfiguration(textStyle: .title2)
 enum Images {
     static let placemark = UIImage(named: "placemark") ?? UIImage()
+    static let closeImage = UIImage(systemName: "xmark.circle.fill", withConfiguration: largeConfig)?.withTintColor(Colors.grayColor ?? .gray, renderingMode: .alwaysOriginal)
 }
