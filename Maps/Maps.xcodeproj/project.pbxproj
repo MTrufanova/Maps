@@ -22,6 +22,7 @@
 		4688BCBB270EE2C100F2916F /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688BCBA270EE2C100F2916F /* Colors.swift */; };
 		46AC59ED271050CF007076FF /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AC59EC271050CF007076FF /* Images.swift */; };
 		46AC59EF2710830A007076FF /* PointInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AC59EE2710830A007076FF /* PointInfoView.swift */; };
+		46AC59F22712E8BB007076FF /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AC59F12712E8BB007076FF /* Point.swift */; };
 		6FAEE5FADDBD89324175F285 /* Pods_MapsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 358422B10622D49AB7B920C8 /* Pods_MapsTests.framework */; };
 		ADBF4DE5A0B43471B76431EA /* Pods_Maps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 643868505040657566A8F7FB /* Pods_Maps.framework */; };
 /* End PBXBuildFile section */
@@ -64,6 +65,7 @@
 		4688BCBA270EE2C100F2916F /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		46AC59EC271050CF007076FF /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		46AC59EE2710830A007076FF /* PointInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointInfoView.swift; sourceTree = "<group>"; };
+		46AC59F12712E8BB007076FF /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		643868505040657566A8F7FB /* Pods_Maps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Maps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68FCD6FBFAF50876F6C173DD /* Pods-Maps-MapsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Maps-MapsUITests.release.xcconfig"; path = "Target Support Files/Pods-Maps-MapsUITests/Pods-Maps-MapsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B1E88E926C67B83A70D77455 /* Pods_Maps_MapsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Maps_MapsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,6 +144,7 @@
 				4688BCB0270DCBE600F2916F /* StartScene */,
 				4688BCB1270DCBF900F2916F /* MainMapScene */,
 				4688BCB2270DCC2300F2916F /* InfoPointScene */,
+				46AC59F02712E88D007076FF /* Model */,
 				4688BC89270DC45A00F2916F /* Assets.xcassets */,
 				4688BCB7270EE25E00F2916F /* Colors.xcassets */,
 				4688BC8B270DC45A00F2916F /* LaunchScreen.storyboard */,
@@ -199,6 +202,14 @@
 				46AC59EC271050CF007076FF /* Images.swift */,
 			);
 			path = Styles;
+			sourceTree = "<group>";
+		};
+		46AC59F02712E88D007076FF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				46AC59F12712E8BB007076FF /* Point.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		5D5488E27C7C3238CA875BCF /* Pods */ = {
@@ -458,6 +469,7 @@
 				4688BCBB270EE2C100F2916F /* Colors.swift in Sources */,
 				4688BC85270DC45900F2916F /* StartViewController.swift in Sources */,
 				4688BC81270DC45900F2916F /* AppDelegate.swift in Sources */,
+				46AC59F22712E8BB007076FF /* Point.swift in Sources */,
 				4688BCB6270DD56B00F2916F /* InfoPointViewController.swift in Sources */,
 				4688BC83270DC45900F2916F /* SceneDelegate.swift in Sources */,
 				46AC59EF2710830A007076FF /* PointInfoView.swift in Sources */,

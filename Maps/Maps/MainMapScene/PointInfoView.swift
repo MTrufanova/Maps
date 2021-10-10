@@ -77,15 +77,15 @@ class PointInfoView: UIView {
     }
     
     
-    func updateGeoposition(lat: Double?, lon: Double?, address: String?, country: String?) {
-        guard let lat = lat, let lon = lon else {
+    func updateGeoposition(point: Point?) {
+        guard let lat = point?.lat, let lon = point?.lon else {
             coordinateLabel.text = " "
             return }
         let latString = String(format: "%.6f", lat)
         let lonString = String(format: "%.6f", lon)
         coordinateLabel.text = "\(latString), \(lonString)"
-        addressLabel.text = address
-        countryCityLabel.text = country
+        addressLabel.text = point?.address
+        countryCityLabel.text = point?.country
     }
     
     private func setupLayout() {

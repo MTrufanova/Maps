@@ -10,6 +10,8 @@ import YandexMapsMobile
 import CoreLocation
 
 class MainMapViewController: UIViewController {
+
+    var point: Point?
     
     private lazy var mapView: YMKMapView = {
         let mapView = YMKMapView()
@@ -20,7 +22,7 @@ class MainMapViewController: UIViewController {
     private lazy var pointInfoView = PointInfoView()
     
     private let locationManager = CLLocationManager()
-    private let searchManager = YMKSearch.sharedInstance().createSearchManager(with: .combined)
+    private let searchManager = YMKSearch.sharedInstance().createSearchManager(with: .online)
     private var searchSession: YMKSearchSession?
     
     override func viewDidLoad() {
@@ -29,8 +31,11 @@ class MainMapViewController: UIViewController {
         pointInfoView.isHidden = true
         pointInfoView.confirmButton.addTarget(self, action: #selector(openDetailInfoPoint), for: .touchUpInside)
         createMapView()
+    }
+
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         setupLayout()
-        
     }
     
     private func createMapView() {
@@ -48,6 +53,7 @@ class MainMapViewController: UIViewController {
     
     @objc private func openDetailInfoPoint() {
         let infoPointVC = InfoPointViewController()
+        infoPointVC.point = point
         infoPointVC.modalPresentationStyle = .formSheet
         navigationController?.present(infoPointVC, animated: true, completion: nil)
     }
@@ -74,13 +80,13 @@ class MainMapViewController: UIViewController {
 
 extension MainMapViewController: YMKMapInputListener {
     func onMapTap(with map: YMKMap, point: YMKPoint) {
-        //        let mapObjects = map.mapObjects
-        //        mapObjects.clear()
-        //        let placemark = mapObjects.addPlacemark(with: point)
-        //        placemark.setIconWith(Images.placemark)
-        //       let long = placemark.geometry.longitude
-        //        let lat = placemark.geometry.latitude
-        //        print("\(long)" + " " + " \(lat)")
+//                let mapObjects = map.mapObjects
+//                mapObjects.clear()
+//                let placemark = mapObjects.addPlacemark(with: point)
+//                placemark.setIconWith(Images.placemark)
+//               let long = placemark.geometry.longitude
+//                let lat = placemark.geometry.latitude
+//                print("\(long)" + " " + " \(lat)")
     }
     
     func onMapLongTap(with map: YMKMap, point: YMKPoint) {
@@ -93,7 +99,7 @@ extension MainMapViewController: YMKMapInputListener {
 extension MainMapViewController: YMKLayersGeoObjectTapListener {
     func onObjectTap(with event: YMKGeoObjectTapEvent) -> Bool {
         pointInfoView.isHidden = false
-        pointInfoView.updateGeoposition(lat: nil, lon: nil, address: " ", country: " ")
+        pointInfoView.updateGeoposition(point: nil)
         let geoObject = event.geoObject
         
         guard let geoPosition = geoObject.geometry.first?.point else { return true }
@@ -116,7 +122,6 @@ extension MainMapViewController: YMKLayersGeoObjectTapListener {
     }
     // MARK: - Получаем данные о точке
     func onSearchResponse(_ response: YMKSearchResponse) {
-        
         guard let searchResult = response.collection.children.first else{ return }
         guard let obj = searchResult.obj else { return }
         guard let metadata =  obj.metadataContainer.getItemOf(YMKSearchToponymObjectMetadata.self) as? YMKSearchToponymObjectMetadata else { return }
@@ -127,7 +132,8 @@ extension MainMapViewController: YMKLayersGeoObjectTapListener {
         let countryPostal = "\(country), \(postalCode)"
         let lon = metadata.balloonPoint.longitude
         let lat = metadata.balloonPoint.latitude
-        pointInfoView.updateGeoposition(lat: lat, lon: lon, address: obj.name, country: countryPostal)
+        point = Point(address: obj.name, country: countryPostal, lat: lat, lon: lon)
+        pointInfoView.updateGeoposition(point: point)
     }
     
     
