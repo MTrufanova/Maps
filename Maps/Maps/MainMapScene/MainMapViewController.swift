@@ -9,9 +9,14 @@ import UIKit
 import YandexMapsMobile
 import CoreLocation
 
+protocol MainMapViewProtocol: AnyObject {
+
+}
+
 class MainMapViewController: UIViewController {
 
     var point: Point?
+    var presenter: MainMapPresenterProtocol?
     
     private lazy var mapView: YMKMapView = {
         let mapView = YMKMapView()
@@ -51,10 +56,7 @@ class MainMapViewController: UIViewController {
     }
     
     @objc private func openDetailInfoPoint() {
-        let infoPointVC = InfoPointViewController()
-        infoPointVC.point = point
-        infoPointVC.modalPresentationStyle = .formSheet
-        navigationController?.present(infoPointVC, animated: true, completion: nil)
+        presenter?.presentPointVC(for: point)
     }
     
     private func setupLayout() {
@@ -115,5 +117,9 @@ extension MainMapViewController: YMKMapInputListener {
         point = Point(address: obj.name, country: country, postalCode: postalCode, lat: lat, lon: lon)
         pointInfoView.updateGeoposition(point: point)
     }
+    
+}
+
+extension MainMapViewController: MainMapViewProtocol {
     
 }

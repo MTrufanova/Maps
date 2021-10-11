@@ -23,6 +23,14 @@
 		46AC59ED271050CF007076FF /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AC59EC271050CF007076FF /* Images.swift */; };
 		46AC59EF2710830A007076FF /* PointInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AC59EE2710830A007076FF /* PointInfoView.swift */; };
 		46AC59F22712E8BB007076FF /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AC59F12712E8BB007076FF /* Point.swift */; };
+		46AC59F427148A98007076FF /* StartScenePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AC59F327148A98007076FF /* StartScenePresenter.swift */; };
+		46AC59F627148B85007076FF /* StartSceneRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AC59F527148B85007076FF /* StartSceneRouter.swift */; };
+		46AC59F827148C63007076FF /* MainMapFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AC59F727148C63007076FF /* MainMapFactory.swift */; };
+		46AC59FA27148FEE007076FF /* StartSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AC59F927148FEE007076FF /* StartSceneFactory.swift */; };
+		46AC59FC271491B7007076FF /* MainMapRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AC59FB271491B7007076FF /* MainMapRouter.swift */; };
+		46AC59FE2714928F007076FF /* InfoPointFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AC59FD2714928F007076FF /* InfoPointFactory.swift */; };
+		46AC5A00271493E1007076FF /* InfoPointPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AC59FF271493E1007076FF /* InfoPointPresenter.swift */; };
+		46AC5A02271494CD007076FF /* MainMapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AC5A01271494CD007076FF /* MainMapPresenter.swift */; };
 		6FAEE5FADDBD89324175F285 /* Pods_MapsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 358422B10622D49AB7B920C8 /* Pods_MapsTests.framework */; };
 		ADBF4DE5A0B43471B76431EA /* Pods_Maps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 643868505040657566A8F7FB /* Pods_Maps.framework */; };
 /* End PBXBuildFile section */
@@ -66,6 +74,14 @@
 		46AC59EC271050CF007076FF /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		46AC59EE2710830A007076FF /* PointInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointInfoView.swift; sourceTree = "<group>"; };
 		46AC59F12712E8BB007076FF /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
+		46AC59F327148A98007076FF /* StartScenePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScenePresenter.swift; sourceTree = "<group>"; };
+		46AC59F527148B85007076FF /* StartSceneRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartSceneRouter.swift; sourceTree = "<group>"; };
+		46AC59F727148C63007076FF /* MainMapFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapFactory.swift; sourceTree = "<group>"; };
+		46AC59F927148FEE007076FF /* StartSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartSceneFactory.swift; sourceTree = "<group>"; };
+		46AC59FB271491B7007076FF /* MainMapRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapRouter.swift; sourceTree = "<group>"; };
+		46AC59FD2714928F007076FF /* InfoPointFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPointFactory.swift; sourceTree = "<group>"; };
+		46AC59FF271493E1007076FF /* InfoPointPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPointPresenter.swift; sourceTree = "<group>"; };
+		46AC5A01271494CD007076FF /* MainMapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMapPresenter.swift; sourceTree = "<group>"; };
 		643868505040657566A8F7FB /* Pods_Maps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Maps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68FCD6FBFAF50876F6C173DD /* Pods-Maps-MapsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Maps-MapsUITests.release.xcconfig"; path = "Target Support Files/Pods-Maps-MapsUITests/Pods-Maps-MapsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B1E88E926C67B83A70D77455 /* Pods_Maps_MapsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Maps_MapsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -174,6 +190,9 @@
 			isa = PBXGroup;
 			children = (
 				4688BC84270DC45900F2916F /* StartViewController.swift */,
+				46AC59F327148A98007076FF /* StartScenePresenter.swift */,
+				46AC59F527148B85007076FF /* StartSceneRouter.swift */,
+				46AC59F927148FEE007076FF /* StartSceneFactory.swift */,
 			);
 			path = StartScene;
 			sourceTree = "<group>";
@@ -183,6 +202,9 @@
 			children = (
 				4688BCB3270DCE1A00F2916F /* MainMapViewController.swift */,
 				46AC59EE2710830A007076FF /* PointInfoView.swift */,
+				46AC59F727148C63007076FF /* MainMapFactory.swift */,
+				46AC59FB271491B7007076FF /* MainMapRouter.swift */,
+				46AC5A01271494CD007076FF /* MainMapPresenter.swift */,
 			);
 			path = MainMapScene;
 			sourceTree = "<group>";
@@ -191,6 +213,8 @@
 			isa = PBXGroup;
 			children = (
 				4688BCB5270DD56B00F2916F /* InfoPointViewController.swift */,
+				46AC59FD2714928F007076FF /* InfoPointFactory.swift */,
+				46AC59FF271493E1007076FF /* InfoPointPresenter.swift */,
 			);
 			path = InfoPointScene;
 			sourceTree = "<group>";
@@ -465,14 +489,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				46AC59ED271050CF007076FF /* Images.swift in Sources */,
+				46AC5A00271493E1007076FF /* InfoPointPresenter.swift in Sources */,
 				4688BCB4270DCE1A00F2916F /* MainMapViewController.swift in Sources */,
 				4688BCBB270EE2C100F2916F /* Colors.swift in Sources */,
 				4688BC85270DC45900F2916F /* StartViewController.swift in Sources */,
+				46AC59FC271491B7007076FF /* MainMapRouter.swift in Sources */,
+				46AC59F427148A98007076FF /* StartScenePresenter.swift in Sources */,
+				46AC5A02271494CD007076FF /* MainMapPresenter.swift in Sources */,
 				4688BC81270DC45900F2916F /* AppDelegate.swift in Sources */,
+				46AC59F827148C63007076FF /* MainMapFactory.swift in Sources */,
 				46AC59F22712E8BB007076FF /* Point.swift in Sources */,
+				46AC59F627148B85007076FF /* StartSceneRouter.swift in Sources */,
+				46AC59FE2714928F007076FF /* InfoPointFactory.swift in Sources */,
 				4688BCB6270DD56B00F2916F /* InfoPointViewController.swift in Sources */,
 				4688BC83270DC45900F2916F /* SceneDelegate.swift in Sources */,
 				46AC59EF2710830A007076FF /* PointInfoView.swift in Sources */,
+				46AC59FA27148FEE007076FF /* StartSceneFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

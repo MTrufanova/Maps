@@ -7,13 +7,19 @@
 
 import UIKit
 
+protocol StartViewProtocol: AnyObject {
+
+}
+
 class StartViewController: UIViewController {
+
+    var presenter: StartPresenterProtocol?
 
    private lazy var showMapButton: UIButton = {
         let button = UIButton()
         button.setTitle("Показать на карте", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
-       button.setTitleColor(Colors.blue, for: .normal)
+        button.setTitleColor(Colors.blue, for: .normal)
         button.addTarget(self, action: #selector(showMapAction), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -27,8 +33,9 @@ class StartViewController: UIViewController {
     }
 
     @objc private func showMapAction() {
-        let mainMapVC = MainMapViewController()
-        navigationController?.pushViewController(mainMapVC, animated: true)
+//        let mainMapVC = MainMapViewController()
+//        navigationController?.pushViewController(mainMapVC, animated: true)
+        presenter?.pushMapVC()
     }
 
     private func setupLayout() {
@@ -41,3 +48,6 @@ class StartViewController: UIViewController {
     }
 }
 
+extension StartViewController: StartViewProtocol {
+    
+}

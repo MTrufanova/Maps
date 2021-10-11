@@ -7,9 +7,15 @@
 
 import UIKit
 
+protocol InfoPointViewProtocol: AnyObject {
+    func showPoint(for point: Point?)
+}
+
 final class InfoPointViewController: UIViewController {
 
     var point: Point?
+    
+    var presenter: InfoPointPresenterProtocol?
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -23,7 +29,20 @@ final class InfoPointViewController: UIViewController {
     private lazy var addressLabel: UILabel = createLabel(with: "Адрес")
     private lazy var latitudeLabel: UILabel = createLabel(with: "lat")
     private lazy var longitudeLabel: UILabel = createLabel(with: "lon")
-    private lazy var addressTextField: UITextField = createTextField()
+
+    private lazy var addressTextView: UITextView = {
+        let textView = UITextView()
+        textView.sizeToFit()
+        textView.textColor = Colors.blackColor
+        textView.font = .systemFont(ofSize: 16, weight: .semibold)
+        textView.isScrollEnabled = false
+        textView.layer.cornerRadius = 5
+        textView.backgroundColor = Colors.viewsBlock
+        textView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 0)
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        return textView
+    }()
+
     private lazy var latitudeTextField: UITextField = createTextField()
     private lazy var longitudeTextField: UITextField = createTextField()
     private lazy var labelsStackView = UIStackView()
@@ -32,6 +51,7 @@ final class InfoPointViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Colors.background
+        presenter?.presentPointInfo()
         createLabelsStack()
         createTextFieldsStack()
         fillFields()
@@ -51,18 +71,18 @@ final class InfoPointViewController: UIViewController {
 
         guard let country = point?.country,
               let address = point?.address else { return }
-        addressTextField.text = "\(country), \(address)"
+        addressTextView.text = "\(country), \(address)"
     }
 
     private func createLabelsStack() {
         labelsStackView = UIStackView(arrangedSubviews: [addressLabel, latitudeLabel, longitudeLabel])
         labelsStackView.axis = .vertical
-        labelsStackView.spacing = 42
+        labelsStackView.spacing = 52
         labelsStackView.translatesAutoresizingMaskIntoConstraints = false
     }
 
     private func createTextFieldsStack() {
-        textFieldsStackView = UIStackView(arrangedSubviews: [addressTextField, latitudeTextField, longitudeTextField])
+        textFieldsStackView = UIStackView(arrangedSubviews: [addressTextView, latitudeTextField, longitudeTextField])
         textFieldsStackView.axis = .vertical
         textFieldsStackView.spacing = 16
         textFieldsStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -82,7 +102,6 @@ final class InfoPointViewController: UIViewController {
             labelsStackView.widthAnchor.constraint(equalToConstant: 70),
             labelsStackView.centerYAnchor.constraint(equalTo: textFieldsStackView.centerYAnchor),
 
-            addressTextField.heightAnchor.constraint(equalToConstant: 44),
             latitudeTextField.heightAnchor.constraint(equalToConstant: 44),
             longitudeTextField.heightAnchor.constraint(equalToConstant: 44),
 
@@ -118,4 +137,12 @@ extension InfoPointViewController {
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }
+}
+
+extension InfoPointViewController: InfoPointViewProtocol {
+    func showPoint(for point: Point?) {
+        self.point = point
+    }
+
+    
 }
