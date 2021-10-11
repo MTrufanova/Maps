@@ -48,7 +48,6 @@ class MainMapViewController: UIViewController {
                 cameraCallback: nil)
         }
         mapView.mapWindow.map.addInputListener(with: self)
-        mapView.mapWindow.map.addTapListener(with: self)
     }
     
     @objc private func openDetailInfoPoint() {
@@ -80,61 +79,41 @@ class MainMapViewController: UIViewController {
 
 extension MainMapViewController: YMKMapInputListener {
     func onMapTap(with map: YMKMap, point: YMKPoint) {
-//                let mapObjects = map.mapObjects
-//                mapObjects.clear()
-//                let placemark = mapObjects.addPlacemark(with: point)
-//                placemark.setIconWith(Images.placemark)
-//               let long = placemark.geometry.longitude
-//                let lat = placemark.geometry.latitude
-//                print("\(long)" + " " + " \(lat)")
-    }
-    
-    func onMapLongTap(with map: YMKMap, point: YMKPoint) {
-        
-    }
-    
-    
-}
-
-extension MainMapViewController: YMKLayersGeoObjectTapListener {
-    func onObjectTap(with event: YMKGeoObjectTapEvent) -> Bool {
         pointInfoView.isHidden = false
         pointInfoView.updateGeoposition(point: nil)
-        let geoObject = event.geoObject
-        
-        guard let geoPosition = geoObject.geometry.first?.point else { return true }
-        
+
         // MARK: - Ставит маячок по тапу
         let mapObjects = mapView.mapWindow.map.mapObjects
         mapObjects.clear()
-        let placemark = mapObjects.addPlacemark(with: geoPosition)
+        let placemark = mapObjects.addPlacemark(with: point)
         placemark.setIconWith(Images.placemark)
-        
+
         let responseHandler = {(searchResponse: YMKSearchResponse?, error: Error?) -> Void in
             if let response = searchResponse {
                 self.onSearchResponse(response)
             }
         }
-        
-        searchSession = searchManager.submit(with: geoPosition, zoom: 16, searchOptions: YMKSearchOptions(), responseHandler: responseHandler)
-        
-        return true
-    }
-    // MARK: - Получаем данные о точке
-    func onSearchResponse(_ response: YMKSearchResponse) {
-        guard let searchResult = response.collection.children.first else{ return }
-        guard let obj = searchResult.obj else { return }
-        guard let metadata =  obj.metadataContainer.getItemOf(YMKSearchToponymObjectMetadata.self) as? YMKSearchToponymObjectMetadata else { return }
-        
-        guard let country = obj.descriptionText,
-              let postalCode = metadata.address.postalCode
-        else { return }
-        let countryPostal = "\(country), \(postalCode)"
-        let lon = metadata.balloonPoint.longitude
-        let lat = metadata.balloonPoint.latitude
-        point = Point(address: obj.name, country: countryPostal, lat: lat, lon: lon)
-        pointInfoView.updateGeoposition(point: point)
+
+        searchSession = searchManager.submit(with: point, zoom: 16, searchOptions: YMKSearchOptions(), responseHandler: responseHandler)
     }
     
+    func onMapLongTap(with map: YMKMap, point: YMKPoint) {
+        
+    }
+
+    // MARK: - Получаем данные о точке
+    func onSearchResponse(_ response: YMKSearchResponse) {
+        guard let searchResult = response.collection.children.first else { return }
+        guard let obj = searchResult.obj else { return }
+        guard let metadata = obj.metadataContainer.getItemOf(YMKSearchToponymObjectMetadata.self) as? YMKSearchToponymObjectMetadata else { return }
+        
+        let postalCode = metadata.address.postalCode
+        let country = obj.descriptionText
+
+        let lon = obj.geometry.first?.point?.longitude
+        let lat = obj.geometry.first?.point?.latitude
+        point = Point(address: obj.name, country: country, postalCode: postalCode, lat: lat, lon: lon)
+        pointInfoView.updateGeoposition(point: point)
+    }
     
 }

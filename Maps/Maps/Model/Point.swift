@@ -10,6 +10,7 @@ import Foundation
 struct Point {
     let address: String?
     let country: String?
+    let postalCode: String?
     let lat: Double?
     let lon: Double?
 }

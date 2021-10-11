@@ -39,6 +39,8 @@ class PointInfoView: UIView {
         label.textColor = Colors.grayColor
         label.font = .systemFont(ofSize: 16, weight: .medium)
         label.textAlignment = .left
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -85,7 +87,11 @@ class PointInfoView: UIView {
         let lonString = String(format: "%.6f", lon)
         coordinateLabel.text = "\(latString), \(lonString)"
         addressLabel.text = point?.address
-        countryCityLabel.text = point?.country
+        guard let country = point?.country, let postalCode = point?.postalCode
+        else {
+            countryCityLabel.text = point?.country
+            return}
+        countryCityLabel.text = "\(country), \(postalCode)"
     }
     
     private func setupLayout() {

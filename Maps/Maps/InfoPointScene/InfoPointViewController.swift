@@ -109,10 +109,11 @@ extension InfoPointViewController {
         textField.layer.cornerRadius = 5
         textField.textColor = Colors.blackColor
         textField.font = .systemFont(ofSize: 16, weight: .semibold)
-        let paddingView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 44))
+        let paddingView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 44))
         textField.leftView = paddingView
         textField.leftViewMode = .always
         textField.textAlignment = .left
+        textField.isUserInteractionEnabled = false
         textField.backgroundColor = Colors.viewsBlock
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
